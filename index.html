@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Anvitha Portfolio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #0f0f0f;
+      background-image: radial-gradient(#2a2240 1px, transparent 1px);
+      background-size: 20px 20px;
+      color: #f3eaff;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 30%, rgba(187, 134, 252, 0.1), transparent 70%),
+                  radial-gradient(circle at 80% 70%, rgba(155, 89, 182, 0.08), transparent 80%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #2a2240;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      z-index: 999;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #bb86fc;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      color: #f3eaff;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 5px 0;
+      display: inline-block;
+      position: relative;
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      height: 3px;
+      background-color: #bb86fc;
+      transition: width 0.4s ease-in-out;
+      border-radius: 2px;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    #home {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 100vh;
+      padding: 100px 50px 50px;
+      gap: 20px;
+    }
+
+    .intro {
+      flex: 1;
+    }
+
+    .intro h2 {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    .intro h1 {
+      font-size: 40px;
+      font-weight: bold;
+      color: #bb86fc;
+    }
+
+    .typing-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .typing-tagline {
+      font-size: 18px;
+      font-weight: 500;
+      color: #ccc;
+      margin-top: 10px;
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid #bb86fc;
+      animation:
+        typing-line 4s steps(60, end) forwards,
+        blink-caret 0.75s step-end 5;
+    }
+
+
+    .download-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      color: white;
+      background: linear-gradient(90deg, #bb86fc, #6200ea);
+      border-radius: 25px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 0 10px #bb86fc;
+      transition: 0.3s;
+    }
+
+    .download-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .profile-box {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .profile-photo {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      border: 5px solid #bb86fc;
+      animation: glow 2s infinite alternate;
+      box-shadow: 0 0 20px #bb86fc;
+      object-fit: cover;
+      max-width: 100%;
+    }
+
+    @keyframes glow {
+      0% { box-shadow: 0 0 10px #bb86fc; }
+      100% { box-shadow: 0 0 25px #03dac5; }
+    }
+
+
+    @keyframes typing-line {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink-caret {
+      0%, 100% { border-color: transparent; }
+      50% { border-color: #bb86fc; }
+    }
+
+
+    @media (max-width: 768px) {
+      #home {
+        flex-direction: column;
+        text-align: center;
+        padding: 80px 20px;
+      }
+
+      .intro {
+        padding-right: 0;
+      }
+
+      .profile-photo {
+        width: 160px;
+        height: 160px;
+        margin-top: 20px;
+      }
+    }
+
+    .about-box {
+      background-color: #1e1b2e;
+      border: 2px solid #3f51b5;
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 800px;
+      margin: 30px auto;
+      text-align: justify;
+      box-shadow: 0 0 10px #3f51b5;
+      animation: borderGlow 2s infinite alternate;
+    }
+
+    @keyframes borderGlow {
+      0% { box-shadow: 0 0 10px #3f51b5; border-color: #3f51b5; }
+      100% { box-shadow: 0 0 20px #00bcd4; border-color: #00bcd4; }
+    }
+
+    #about {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 50px 20px;
+    }
+
+    .about-container {
+      text-align: center;
+    }
+
+    #about h2 {
+      font-size: 40px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .skills-container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .skill {
+      margin-bottom: 25px;
+    }
+
+    .skill h3 {
+      margin-bottom: 8px;
+      color: #f3eaff;
+    }
+
+    .skill-bar {
+      background-color: #1e1e1e;
+      height: 15px; /* reduced height */
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 8px #bb86fc88;
+    }
+
+    .skill-per {
+      height: 100%;
+      background: linear-gradient(90deg, #bb86fc, #6200ea);
+      text-align: right;
+      padding-right: 10px;
+      line-height: 15px;
+      color: #fff;
+      font-weight: 500;
+      animation: growSkill 2s ease-in-out;
+      border-radius: 20px 0 0 20px;
+    }
+
+
+    @keyframes growSkill {
+      from {
+        width: 0;
+      }
+      to {
+        width: var(--width);
+      }
+    }
+
+    .tools-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+      padding: 0 20px; /* Add horizontal padding to avoid cut-off */
+      box-sizing: border-box;
+      max-width: 100%;
+    }
+
+
+
+    .tools-list span {
+      background: linear-gradient(90deg, #bb86fc, #6200ea);
+      padding: 10px 20px;
+      border-radius: 20px;
+      color: white;
+      font-weight: 500;
+      box-shadow: 0 0 10px #bb86fc66;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      white-space: nowrap; /* Prevent breaking text inside buttons */
+    }
+
+
+    .tools-list span:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #bb86fcaa;
+    }
+
+    .contact {
+      min-height: 100vh;
+      padding: 80px 20px;
+      text-align: center;
+      background: var(--dot-grid-bg);
+    }
+
+    .contact h2 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .contact-subtext {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+      color: #aaa;
+    }
+
+    .contact-form {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 15px;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+      outline: none;
+      background: #111;
+      color: white;
+      animation: blue-glow 2s infinite alternate;
+    }
+
+    @keyframes blue-glow {
+      from {
+        box-shadow: 0 0 5px #00bfff;
+      }
+      to {
+        box-shadow: 0 0 15px #00bfff, 0 0 30px #1e90ff;
+      }
+    }
+
+    .contact-form button {
+      background: #00bfff;
+      border: none;
+      padding: 12px 20px;
+      font-size: 1rem;
+      color: white;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background: #1e90ff;
+    }
+
+    .contact-links {
+      margin-top: 30px;
+      font-size: 1rem;
+    }
+
+    .contact-links a {
+      color: #00bfff;
+      text-decoration: none;
+    }
+
+    .contact-links a:hover {
+      color: #ffffff;
+    }
+
+    .input-box:focus {
+      outline: none;
+      border: 2px solid #00bfff; /* Light blue border */
+      box-shadow: 0 0 8px rgba(0, 191, 255, 0.5); /* Soft glow */
+      transition: all 0.3s ease;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 15px 0;
+      background-color: #111; /* Dark background */
+      color: #fff; /* White text */
+      font-size: 14px;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+
+
+
+
+
+
+
+
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Portfolio</div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home">
+    <div class="intro">
+      <h2>Hello!</h2>
+      <h1>I'm, Anvitha</h1>
+      <div class="typing-container">
+        <div class="typing-tagline">Aspiring Software Developer | Tech Enthusiast | CSE Student</div>
+        <a href="Anvitha_Resume.pdf" download class="download-btn">Download CV</a>
+      </div>
+    </div>
+    <div class="profile-box">
+      <img src="anvitha.png" alt="Anvitha's Photo" class="profile-photo" />
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="about-container">
+      <h2>
+        <span style="color: white;">About</span><span style="color: #bb86fc;">Me</span>
+      </h2>
+      <div class="about-box">
+        <p style="color: #ddd; font-size: 18px; line-height: 1.8; text-align: justify;">
+          Hello, I'm Anvitha, a B.Tech student pursuing Computer Science and Engineering at Shri Vishnu Engineering College for Women. 
+          I have a strong passion for technology and programming. I'm eager to bring my knowledge to a company that shares my vision and values. 
+          I'm looking for opportunities to learn and grow through internships and projects.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS Section -->
+  <section id="skills" style="padding: 80px 30px; margin-bottom: 80px; text-align: center;">
+    <h2 style="font-size: 40px; font-weight: bold; margin-bottom: 40px;">
+      <span style="color: white;">My</span><span style="color: #bb86fc;"> Skills</span>
+    </h2>
+
+    <div class="skills-container">
+      <div class="skill">
+        <h3>Python</h3>
+        <div class="skill-bar"><div class="skill-per" style="width: 80%;">80%</div></div>
+      </div>
+      <div class="skill">
+        <h3>C</h3>
+        <div class="skill-bar"><div class="skill-per" style="width: 70%;">70%</div></div>
+      </div>
+      <div class="skill">
+        <h3>Java</h3>
+        <div class="skill-bar"><div class="skill-per" style="width: 70%;">70%</div></div>
+      </div>
+      <div class="skill">
+        <h3>Web Development</h3>
+        <div class="skill-bar"><div class="skill-per" style="width: 60%;">60%</div></div>
+      </div>
+      <div class="skill">
+        <h3>Data Structures</h3>
+        <div class="skill-bar"><div class="skill-per" style="width: 65%;">65%</div></div>
+      </div>
+    </div>
+
+    <h2 style="font-size: 36px; font-weight: bold; margin-top: 70px; margin-bottom: 30px;">
+      <span style="color: white;">Tools</span><span style="color: #bb86fc;"> I Use</span>
+    </h2>
+    <div class="tools-list">
+      <span>VS Code</span>
+      <span>Git</span>
+      <span>GitHub</span>
+    </div>
+  </section>
+
+  <!-- PROJECTS Section -->
+  <!-- PROJECTS Section -->
+  <section id="projects" style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 50px 30px;">
+    <h2 style="font-size: 40px; font-weight: bold; margin-bottom: 40px;">
+      <span style="color: white;">My</span><span style="color: #bb86fc;"> Projects</span>
+    </h2>
+
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+      <div style="background-color: #2a2240; border-radius: 20px; padding: 20px; width: 280px; box-shadow: 0 0 10px #bb86fc66;">
+        <h3 style="color: #bb86fc;">To-Do List App</h3>
+        <p style="color: #ddd;">A simple task manager to add, complete, and delete tasks. Built with Python.</p>
+      </div>
+      <div style="background-color: #2a2240; border-radius: 20px; padding: 20px; width: 280px; box-shadow: 0 0 10px #bb86fc66;">
+        <h3 style="color: #bb86fc;">Personal Portfolio</h3>
+        <p style="color: #ddd;">A responsive website showcasing my skills and background, built with HTML, CSS, and animations.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2 style="font-size: 40px; font-weight: bold; margin-bottom: 40px;">
+      <span style="color: white;">Contact</span><span style="color: #bb86fc;"> Me</span>
+    </h2>
+    <p class="contact-subtext">Feel free to reach out.</p>
+
+    <form class="contact-form" action="https://formsubmit.co/23b01a05a6@svecw.edu.in" method="POST">
+      <input class="input-box" type="text" name="name" placeholder="Your Name" required>
+      <input class="input-box" type="email" name="email" placeholder="Your Email" required>
+      <textarea class="input-box" name="message" placeholder="Your Message" rows="5" required></textarea>
+
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_autoresponse" value="Thanks Anvitha! I’ll get back to you soon.">
+
+      <button type="submit">Send Message</button>
+    </form>
+
+
+    <div class="contact-links">
+      <!-- This is for an icon or text that sends mail -->
+      <a href="mailto:23b01a05a6@svecw.edu.in" target="_blank" title="Send me an email">
+        <i class="fa fa-envelope"></i> Gmail
+      </a>
+
+      <a href="https://linkedin.com/in/anvitha-madanu-0a98662a1" target="_blank">💼 LinkedIn</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 Anvitha. All rights reserved.</p>
+  </footer>
+
+
+
+
+</body>
+</html>
